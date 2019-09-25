@@ -71,14 +71,91 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 	</style>
 </head>
+
 <body>
 
 	<div id="container">
 		<div id="app">
-			<h1><span v-if="seen">Welcome to codeIgniter and VueJS</span></h1>
+			<h1><span v-if="seen"> Welcome to codeIgniter and VueJS</span></h1>
 		</div>
-		<div class="alert alert-primary" role="alert">
-			This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+		<div class="alert alert-dismissible alert-warning">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<h4 class="alert-heading">Warning!</h4>
+			<p class="mb-0"><i class="fas fa-user"></i> Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, <a href="#" class="alert-link">vel scelerisque nisl consectetur et</a>.</p>
+		</div>
+		<div class="container">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">Type</th>
+						<th scope="col">Column heading</th>
+						<th scope="col">Column heading</th>
+						<th scope="col">Column heading</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="table-active">
+						<th scope="row">Active</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr>
+						<th scope="row">Default</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr class="table-primary">
+						<th scope="row">Primary</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr class="table-secondary">
+						<th scope="row">Secondary</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr class="table-success">
+						<th scope="row">Success</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr class="table-danger">
+						<th scope="row">Danger</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr class="table-warning">
+						<th scope="row">Warning</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr class="table-info">
+						<th scope="row">Info</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr class="table-light">
+						<th scope="row">Light</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr class="table-dark">
+						<th scope="row">Dark</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+				</tbody>
+			</table> 
 		</div>
 		<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 	</div>
