@@ -36,3 +36,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 !.phpcs.xml.dist
 
 /assets/fonts/*
+/assets/dist/*
