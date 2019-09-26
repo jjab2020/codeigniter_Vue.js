@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<title>Welcome to CodeIgniter</title>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/dist/app.css">
+	<link rel="stylesheet" type="text/css" href="{{base_url()}}assets/dist/app.css">
 	<style type="text/css">
 		::selection { background-color: #f07746; color: #fff; }
 		::-moz-selection { background-color: #f07746; color: #fff; }
@@ -76,8 +76,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<div id="container">
 		<div id="app">
-			<h1><span v-if="seen"> Welcome to codeIgniter and VueJS</span></h1>
+			<h1><span>@{{ msg }} </span></h1>	
 		</div>
+		<h1>Hello my friend {{ $name }} from codeigniter</h1>
+		@for($a=1;$a<=3;$a++)
+		   <p>{{$a}}</p>
+		@endfor
 		<div class="alert alert-dismissible alert-warning">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<h4 class="alert-heading">Warning!</h4>
@@ -159,6 +163,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 		<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 	</div>
-	<script type="text/javascript" src=<?php echo base_url()."assets/dist/app.js" ?> ></script>
+	<script type="text/javascript" src={{base_url()}}assets/dist/app.js ></script>
 </body>
 </html>
