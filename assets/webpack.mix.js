@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+let webpack = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -10,6 +11,20 @@ let mix = require('laravel-mix');
  | file for your application, as well as bundling up your JS files.
  |
  */
+
+/*mix.autoload({
+ jquery: ['$', 'jQuery', 'window.jQuery'],
+});*/
+
+mix.webpackConfig({
+  plugins: [
+    new webpack.ProvidePlugin({
+        '$': 'jquery',
+        'jQuery': 'jquery',
+        'window.jQuery': 'jquery',
+    }),
+  ]
+});
 
 mix.js('./src/app.js', './dist/').sass('./src/app.scss', './dist/');
 mix.setResourceRoot('/ci_intervention/assets/');
