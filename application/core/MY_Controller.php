@@ -5,15 +5,14 @@ class MY_Controller extends CI_Controller {
 
 	protected $views = APPPATH . 'views';
 	protected $cache = APPPATH . 'cache';
+	protected $dotenv;
 	protected $blade;
 
 	public function __construct(){
 		parent::__construct();
 		$this->blade = new PhpBlade($this->views, $this->cache);
+		$this->dotenv = Dotenv\Dotenv::create(APPPATH);
+        $this->dotenv->load();
 
 	}
-
 }
-
-/* End of file MY_Controller.php */
-/* Location: ./application/core/MY_Controller.php */
