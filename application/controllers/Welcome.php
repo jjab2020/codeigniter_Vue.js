@@ -17,12 +17,14 @@ class Welcome extends MY_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	
 	public function index()
 	{
 		//$this->load->view('welcome_message');
 		$this->load->library('pdf');
 		echo $this->blade->view()->make('welcome_message', ['name' => 'John Doe']);
 	}
+
 	public function getListUsers(){
 		$this->load->model('User_model');
 		$data = User_model::all();
