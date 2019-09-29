@@ -1,9 +1,11 @@
 @extends('layouts.main') 
 @section('content')
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    <div class="card  shadow mb-4">
+        <div class="card-header bg-primary py-3">
+        <p class="lead">
+           <h4 class="m-0 font-weight-bold text-white">User List :</h4>
+        </p>
         </div>
             <div class="card-body" id="app">
               <div class="table-responsive">

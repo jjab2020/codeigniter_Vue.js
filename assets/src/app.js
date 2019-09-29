@@ -29,7 +29,7 @@ methods:{
  },
  showSelected(record){
   if (event.target.classList.contains('btn__content')) return;
-  console.log(record.name + '' + record.surname + '' + record.email);
+  console.log(record.name + ' ,' + record.surname + ' ,' + record.email);
 }
 
 }
