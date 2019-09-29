@@ -32,6 +32,7 @@
 >* composer install
 >* cd /assets
 >* npm run watch
+>* Change the credentiel of your database (username and password) in /application/.env file
 >* Import sql file from sql folder using phpmyadmin or MySQL Workbench
 
 
