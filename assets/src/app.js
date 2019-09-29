@@ -6,15 +6,32 @@ import 'startbootstrap-sb-admin-2/js/sb-admin-2.js';
 import 'startbootstrap-sb-admin-2/vendor/datatables/jquery.dataTables.min.js';
 import 'jquery-ui/ui/widgets/datepicker.js';
 import 'select2';
+import axios from 'axios';
 
 const Vue = require('vue');
 
-new Vue({
+var app = new Vue({
   el:'#app',
   data:{
-   msg: "SB Admin!"
-  },
-  method:{
+   users: ''
+ },
+ mounted() {
+  this.allRecords();
+},
+methods:{
+  allRecords:function(){
+   axios.get('listusers').then(response => {
+    this.users = response.data
+  })
+   .catch(function (error) {
+     console.log(error);
+   });
+ },
+ showSelected(record){
+  if (event.target.classList.contains('btn__content')) return;
+  console.log(record.name + '' + record.surname + '' + record.email);
+}
 
-  }
+}
+
 });

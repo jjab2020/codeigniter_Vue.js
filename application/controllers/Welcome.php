@@ -19,17 +19,14 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-
-		$this->load->model('User_model');
-		$data = User_model::all();
-		foreach ($data as $d) {
-			echo $d->nom;
-			echo $d->email;
-			echo $d->id;
-		}
-		
 		//$this->load->view('welcome_message');
 		$this->load->library('pdf');
 		echo $this->blade->view()->make('welcome_message', ['name' => 'John Doe']);
+	}
+	public function getListUsers(){
+		$this->load->model('User_model');
+		$data = User_model::all();
+		echo json_encode($data);
+		exit();
 	}
 }
