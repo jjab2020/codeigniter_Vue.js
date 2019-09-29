@@ -1,4 +1,4 @@
-## Application using codeigniter and vue.js
+## Application using codeigniter and vue.js( CodeIgniter 3.1.11 , Vue 2.6.10)
 ![Image of Yaktocat](https://lws-abt5wcf.netdna-ssl.com/blogs/wp-content/uploads/2017/09/codeigniter-lg-299x300.gif)
 
 ### This repositery contain:
