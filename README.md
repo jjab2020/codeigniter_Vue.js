@@ -32,6 +32,7 @@
 >* composer install
 >* cd /assets
 >* npm run watch
+>* Import sql file from sql folder using phpmyadmin
 
 
 ### Authors
