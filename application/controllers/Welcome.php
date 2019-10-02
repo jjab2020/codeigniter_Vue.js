@@ -31,4 +31,7 @@ class Welcome extends MY_Controller {
 		echo json_encode($data);
 		exit();
 	}
+	public function addUser(){
+		echo "test";
+	}
 }

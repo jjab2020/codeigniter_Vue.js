@@ -2,6 +2,12 @@
 $fa-font-path:        "../webfonts" !default;
 
 @import "~bootswatch/dist/materia/variables";
+
+
+$theme-colors: (
+  custom: $gray-200
+);
+
 @import "bootstrap";
 @import "~bootswatch/dist/materia/bootswatch";
 @import "~startbootstrap-sb-admin-2/scss/sb-admin-2";
