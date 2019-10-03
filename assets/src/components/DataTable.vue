@@ -10,37 +10,37 @@
       </div>
     </div>
     <div class="card-body" >
-       <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+     <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
-          <tbody>
-            <tr v-for="u in tableData" @click="showSelectedValue(u)">
-             <td> {{ u.id }}</td>
-             <td> {{ u.name }}</td>
-             <td> {{ u.email }}</td>
-             <td>
-              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                <button type="button" class="btn btn-primary"><i class="fas fa-cog"></i></button>
-                <div class="btn-group" role="group">
-                  <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                  <div class="dropdown-menu" @click="toggleDropdown($event)" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 45px, 0px);">
-                    <a class="dropdown-item" href="#"><i class="fas fa-user-edit"></i>  Edit User</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-user-minus"></i>  Delete User</a>
-                  </div>
+        <tbody>
+          <tr v-for="u in tableData" @click="showSelectedValue(u)">
+           <td> {{ u.id }}</td>
+           <td> {{ u.name }}</td>
+           <td> {{ u.email }}</td>
+           <td>
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+              <button type="button" class="btn btn-primary"><i class="fas fa-cog"></i></button>
+              <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                <div class="dropdown-menu" @click="toggleDropdown($event,u)" aria-labelledby="btnGroupDrop1" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 45px, 0px);">
+                  <a class="dropdown-item" href="#"><i class="fas fa-user-edit"></i>  Edit User</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-user-minus"></i>  Delete User</a>
                 </div>
               </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <div id="add_user" class="modal">
@@ -107,8 +107,8 @@
       })
     },
     showSelectedValue(record){
-      if (event.target.classList.contains('btn__content')) return;
-      console.log(record.name + ' ,' + record.email);
+      /*if (event.target.classList.contains('btn__content')) return;
+      console.log(record.name + ' ,' + record.email);*/
     },
     addUser(){
       this.errors='';
@@ -121,14 +121,18 @@
 
       });
     },
-    toggleDropdown(event){
-     
-      if($(event.target).closest('a.dropdown-item').find('i').hasClass('fas fa-user-edit')){
-          console.log('edit');
+    toggleDropdown(event,userid){
+
+      let id_user = Number($(event.target).closest('tr').find('td:eq(0)').text()),
+      selectedAction = $(event.target).closest('a.dropdown-item').find('i').hasClass('fas fa-user-minus'); 
+      
+      if(selectedAction){
+        console.log('i want to delete');
       }
       else{
-          console.log('delete');
+        console.log('i want to edit');
       }
+
     }
   },
   name: 'DataTable'
