@@ -8,6 +8,7 @@ import 'startbootstrap-sb-admin-2/vendor/datatables/jquery.dataTables.min.js';
 import 'jquery-ui/ui/widgets/datepicker.js';
 import 'select2';
 import axios from 'axios';
+import moment from 'moment';
 
 
 import Vue from 'vue';

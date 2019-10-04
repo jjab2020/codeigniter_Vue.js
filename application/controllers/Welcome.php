@@ -26,8 +26,11 @@ class Welcome extends MY_Controller {
 	}
 
 	public function getListUsers(){
-		$this->load->model('User_model');
-		$data = User_model::all();
+
+		$data = User::all();
+
+		// one to one relationship laravel eloquant inside codeigniter 
+		$detail_user = User::find(4)->Details()->get();//echo ($detail_user);
 		echo json_encode($data);
 		exit();
 	}

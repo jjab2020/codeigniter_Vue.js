@@ -10,6 +10,11 @@
 		"slack": "https://codeigniterchat.slack.com",
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
+     "autoload": {
+        "classmap": [
+           "../application/models"
+         ]
+    }, 
 	"require": {
 		"php": ">=5.3.7",
 		"coolpraz/php-blade": "^0.1.0",
