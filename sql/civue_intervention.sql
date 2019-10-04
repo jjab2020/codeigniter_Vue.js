@@ -1,54 +1,114 @@
--- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 29 sep. 2019 à 05:11
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema civue_intervention
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `civue_intervention` ;
 
---
--- Base de données :  `civue_intervention`
---
-CREATE DATABASE IF NOT EXISTS `civue_intervention` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `civue_intervention`;
+-- -----------------------------------------------------
+-- Schema civue_intervention
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `civue_intervention` DEFAULT CHARACTER SET utf8 ;
+USE `civue_intervention` ;
 
--- --------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `civue_intervention`.`failed_jobs`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `civue_intervention`.`failed_jobs` ;
 
---
--- Structure de la table `users`
---
+CREATE TABLE IF NOT EXISTS `civue_intervention`.`failed_jobs` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `connection` TEXT NOT NULL,
+  `queue` TEXT NOT NULL,
+  `payload` LONGTEXT NOT NULL,
+  `exception` LONGTEXT NOT NULL,
+  `failed_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8;
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `surname` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
---
--- Déchargement des données de la table `users`
---
+-- -----------------------------------------------------
+-- Table `civue_intervention`.`migrations`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `civue_intervention`.`migrations` ;
 
-INSERT INTO `users` (`id`, `name`, `surname`, `email`) VALUES
-(1, 'Jabrane', 'jabri', 'jabrane.pro@gmail.com'),
-(2, 'amine', 'bahlous', 'amine@gmail.com'),
-(3, 'asma', 'Jerbi', 'asma@gmail.com');
-COMMIT;
+CREATE TABLE IF NOT EXISTS `civue_intervention`.`migrations` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` VARCHAR(255) NOT NULL,
+  `batch` INT(11) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = MyISAM
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- -----------------------------------------------------
+-- Table `civue_intervention`.`password_resets`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `civue_intervention`.`password_resets` ;
+
+CREATE TABLE IF NOT EXISTS `civue_intervention`.`password_resets` (
+  `email` VARCHAR(255) NOT NULL,
+  `token` VARCHAR(255) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  INDEX `password_resets_email_index` (`email` ASC))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `civue_intervention`.`users`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `civue_intervention`.`users` ;
+
+CREATE TABLE IF NOT EXISTS `civue_intervention`.`users` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `users_email_unique` (`email` ASC))
+ENGINE = MyISAM
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `civue_intervention`.`websockets_statistics_entries`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `civue_intervention`.`websockets_statistics_entries` ;
+
+CREATE TABLE IF NOT EXISTS `civue_intervention`.`websockets_statistics_entries` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `app_id` VARCHAR(255) NOT NULL,
+  `peak_connection_count` INT(11) NOT NULL,
+  `websocket_message_count` INT(11) NOT NULL,
+  `api_message_count` INT(11) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `civue_intervention`.`details_user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `civue_intervention`.`details_user` ;
+
+CREATE TABLE IF NOT EXISTS `civue_intervention`.`details_user` (
+  `id_details` INT NOT NULL AUTO_INCREMENT,
+  `phone_user` VARCHAR(255) NOT NULL,
+  `adress_user` VARCHAR(255) NOT NULL,
+  `photo_user` VARCHAR(255) NOT NULL,
+  `user_id` BIGINT(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id_details`),
+  CONSTRAINT `FK_USER_ID`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `civue_intervention`.`users` (`id`))
+ENGINE = MyISAM;
