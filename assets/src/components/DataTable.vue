@@ -58,6 +58,9 @@
             
             <h1 class="lead text-dark" v-html="errors"> {{errors}} </h1>
            </div>
+           <div class="alert alert-success" v-if="msg == true">
+              User add with success
+           </div>
           <div class="row">
             <div class="col-sm-4">
               <div class="form-group">
@@ -97,7 +100,8 @@
        fields: {},
        actions: 'adduser',
        tableData: [],
-       errors: ''
+       errors: '',
+       msg:''
      }
    },
    created() {
@@ -116,6 +120,7 @@
     },
     addUser(){
       this.errors='';
+      this.msg = '';
       $("#add_user").modal("show");
     },
     submit() {
@@ -126,12 +131,16 @@
 
       this.$axios.post(this.actions, formData).then(response => {
         if($.isEmptyObject(response.data.error)){
+          
           this.fields = {};
           this.errors = '';
-          $('#add_user').modal('hide');
-
-          //refresh datatable view
-          this.fetchData("listusers");
+          this.msg = response.data.success;
+          
+          setTimeout(function(){
+               $('#add_user').modal('hide');
+            }, 2000);
+          
+          this.fetchData("listusers"); 
 
         }
         else{

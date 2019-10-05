@@ -29,7 +29,7 @@ class Welcome extends MY_Controller {
 	{
 
 		$data = User::orderBy('id', 'desc')->get();
-		$detail_user = User::find(4)->Details()->get();
+		//$detail_user = User::find(1)->Details()->get();
 		json_output($data);
 	}
 
@@ -38,8 +38,8 @@ class Welcome extends MY_Controller {
 
 		$data = $this->input->post();	
 
-		$this->form_validation->set_rules('name', 'Name', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
 		if($this->form_validation->run() == FALSE)
 		{

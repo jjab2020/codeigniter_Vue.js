@@ -21,7 +21,8 @@
 		"mpdf/mpdf": "^8.0",
 		"vlucas/phpdotenv": "^3.6",
 		"illuminate/database": "^5.4",
-		"illuminate/events": "^5.4"
+		"illuminate/events": "^5.4",
+		"zoonman/linkedin-api-php-client": "^0.0.14"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
