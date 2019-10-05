@@ -25,16 +25,44 @@ class Welcome extends MY_Controller {
 		echo $this->blade->view()->make('welcome_message', ['name' => 'John Doe']);
 	}
 
-	public function getListUsers(){
+	public function getListUsers()
+	{
 
-		$data = User::all();
-
-		// one to one relationship laravel eloquant inside codeigniter 
-		$detail_user = User::find(4)->Details()->get();//echo ($detail_user);
-		echo json_encode($data);
-		exit();
+		$data = User::orderBy('id', 'desc')->get();
+		$detail_user = User::find(4)->Details()->get();
+		json_output($data);
 	}
-	public function addUser(){
-		echo "test";
+
+	public function addUser()
+	{
+
+		$data = $this->input->post();	
+
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+
+		if($this->form_validation->run() == FALSE)
+		{
+
+			$errors = validation_errors();
+			json_output(['error'=>$errors]);
+		}
+		else
+		{
+			$user = User::create([
+				'name'        => $this->input->post('name'),
+				'email' => $this->input->post('email'),
+				'created_at'     => date('Y-m-d H:i:s'),
+				'updated_at'     => date('Y-m-d H:i:s')
+			]);
+
+			if ($user->exists) {
+				json_output(['success'=>true]);	
+			} 
+			else 
+			{
+				json_output(['error'=>'error in creation of user']);
+			}	
+		}
 	}
 }

@@ -54,11 +54,15 @@
       </div>
       <form @submit.prevent="submit">
         <div class="modal-body">
+           <div class="alert alert-danger" v-if="errors.length > 0">
+            
+            <h1 class="lead text-dark" v-html="errors"> {{errors}} </h1>
+           </div>
           <div class="row">
             <div class="col-sm-4">
               <div class="form-group">
                 <label class="font-weight-bold">User Name:</label>
-                <input type="text" name="name" id="name" placeholder="User Name" class="form-control"
+                <input type="text" name="name" id="name" placeholder="User Name" class="form-control" 
                 v-model="fields.name">
               </div>
             </div>
@@ -93,11 +97,11 @@
        fields: {},
        actions: 'adduser',
        tableData: [],
-       errors: []
+       errors: ''
      }
    },
    created() {
-    return this.fetchData("listusers")
+    return this.fetchData("listusers");
   },
   methods: {
     fetchData(url) {
@@ -115,8 +119,25 @@
       $("#add_user").modal("show");
     },
     submit() {
-      this.$axios.post(this.actions, this.fields).then(response => {
-        this.fields = {};
+
+      const formData = new FormData();
+      formData.append('name', this.fields.name);
+      formData.append('email', this.fields.email);
+
+      this.$axios.post(this.actions, formData).then(response => {
+        if($.isEmptyObject(response.data.error)){
+          this.fields = {};
+          this.errors = '';
+          $('#add_user').modal('hide');
+
+          //refresh datatable view
+          this.fetchData("listusers");
+
+        }
+        else{
+           this.errors = response.data.error;
+        }
+        
       }).catch(error => {
 
       });
