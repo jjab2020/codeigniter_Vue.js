@@ -10,6 +10,9 @@
       </div>
     </div>
     <div class="card-body" >
+       <div class="alert alert-success" v-show="elementVisible" v-if="msg == true">
+              User add with success
+           </div>
      <div class="table-responsive">
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -58,9 +61,7 @@
             
             <h1 class="lead text-dark" v-html="errors"> {{errors}} </h1>
            </div>
-           <div class="alert alert-success" v-if="msg == true">
-              User add with success
-           </div>
+          
           <div class="row">
             <div class="col-sm-4">
               <div class="form-group">
@@ -101,7 +102,8 @@
        actions: 'adduser',
        tableData: [],
        errors: '',
-       msg:''
+       msg:'',
+       elementVisible: true
      }
    },
    created() {
@@ -135,12 +137,11 @@
           this.fields = {};
           this.errors = '';
           this.msg = response.data.success;
-          
-          setTimeout(function(){
-               $('#add_user').modal('hide');
-            }, 2000);
-          
-          this.fetchData("listusers"); 
+
+          $('#add_user').modal('hide');
+                    
+          this.fetchData("listusers");
+          setTimeout(() => this.elementVisible = false, 3000); 
 
         }
         else{
