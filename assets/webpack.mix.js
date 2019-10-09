@@ -27,7 +27,7 @@ mix.webpackConfig({
 });
 
 mix.js('./src/app.js', './dist/').sass('./src/app.scss', './dist/');
-mix.setResourceRoot('/ci_intervention/assets/');
+mix.setResourceRoot('../');
 
 // Full API
 // mix.js(src, output);
