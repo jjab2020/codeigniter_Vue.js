@@ -20,9 +20,13 @@ class Welcome extends MY_Controller {
 	
 	public function index()
 	{
-		//$this->load->view('welcome_message');
-		$this->load->library('pdf');
-		echo $this->blade->view()->make('welcome_message', ['name' => 'John Doe']);
+		$pdf = new Pdf();
+
+		//$content= $this->blade->view()->make('example');
+		$content= $this->blade->view()->make('welcome_message', ['name' => 'John Doe']);
+		echo $content;
+		/*$pdf->writeHtml($content);
+		$pdf->Output();*/
 	}
 
 	public function getListUsers()

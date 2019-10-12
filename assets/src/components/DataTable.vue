@@ -132,8 +132,8 @@
       formData.append('email', this.fields.email);
 
       this.$axios.post(this.actions, formData).then(response => {
-        if($.isEmptyObject(response.data.error)){
-          
+
+        if(this._.isEmpty(response.data.error)){    
           this.fields = {};
           this.errors = '';
           this.msg = response.data.success;

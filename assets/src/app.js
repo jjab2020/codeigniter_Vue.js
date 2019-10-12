@@ -14,6 +14,7 @@ import moment from 'moment';
 import Vue from 'vue';
 window.Vue = Vue;
 Vue.prototype.$axios = axios;
+import VueLodash from 'vue-lodash';
 
 import DataTable from './components/DataTable';
 

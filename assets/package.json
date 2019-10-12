@@ -31,6 +31,7 @@
     "popper.js": "^1.15.0",
     "select2": "^4.0.10",
     "startbootstrap-sb-admin-2": "^4.0.7",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-lodash": "^2.0.2"
   }
 }
