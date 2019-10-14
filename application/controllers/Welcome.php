@@ -33,7 +33,10 @@ class Welcome extends MY_Controller {
 	{
 
 		$data = User::orderBy('id', 'desc')->get();
-		//$detail_user = User::find(1)->Details()->get();
+		/*pretty_dump([1,2,3]);
+		Util::pretty_dump([1,2,3]);
+		exit();
+		$detail_user = User::find(1)->Details()->get();*/
 		json_output($data);
 	}
 

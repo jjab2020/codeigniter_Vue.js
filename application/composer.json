@@ -13,7 +13,8 @@
      "autoload": {
         "classmap": [
            "../application/models",
-           "../application/libraries"
+           "../application/libraries",
+           "../application/helpers"
          ]
     }, 
 	"require": {
